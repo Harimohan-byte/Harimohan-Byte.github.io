@@ -1,0 +1,21 @@
+<!-- Stat strip: real counts pulled from the site, not placeholder numbers -->
+<div class="ops-gradient-rule"></div>
+<section class="ops-stats">
+  <div class="ops-stat">
+    <span class="ops-stat-num">{{ site.posts.size }}</span>
+    <span class="ops-stat-label">Writeups Published</span>
+  </div>
+  <div class="ops-stat">
+    <span class="ops-stat-num">{{ site.categories.size }}</span>
+    <span class="ops-stat-label">Categories Covered</span>
+  </div>
+  <div class="ops-stat">
+    <span class="ops-stat-num">{{ site.tags.size }}</span>
+    <span class="ops-stat-label">Tags Used</span>
+  </div>
+  <div class="ops-stat">
+    <span class="ops-stat-num">{{ site.time | date: "%b %Y" }}</span>
+    <span class="ops-stat-label">Last Updated</span>
+  </div>
+</section>
+<div class="ops-gradient-rule"></div>

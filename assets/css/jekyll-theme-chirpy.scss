@@ -1,0 +1,194 @@
+---
+---
+
+@use 'abstracts/variables' with (
+  $theme: '{{ site.theme_mode }}'
+);
+
+/* prettier-ignore */
+@use 'main
+{%- if jekyll.environment == 'production' -%}
+  .bundle
+{%- endif -%}
+';
+
+/* ==========================================================================
+   Security-ops theme overrides — see THEME_DESIGN.md for the full brief
+   ========================================================================== */
+
+/* -- Font imports -------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* -- Color tokens, dark mode only ----------------------------------------- */
+:root[data-mode='dark'] {
+  --ops-bg-void: #05080b;
+  --ops-bg-panel: #0b1116;
+  --ops-accent: #3ed9e0;
+  --ops-accent-soft: #8fe9ec;
+  --ops-text-primary: #f2f6f7;
+  --ops-text-muted: #8a9aa0;
+
+  /* re-point a few existing Chirpy variables at the new palette */
+  --main-bg: var(--ops-bg-void);
+  --card-bg: var(--ops-bg-panel);
+  --card-hover-bg: #101922;
+  --link-color: var(--ops-accent);
+  --sidebar-bg: var(--ops-bg-panel);
+  --topbar-bg: rgb(5 8 11 / 80%);
+}
+
+/* -- Heading + label typography -------------------------------------------- */
+:root[data-mode='dark'] h1,
+:root[data-mode='dark'] h2,
+:root[data-mode='dark'] h3,
+:root[data-mode='dark'] .card-title {
+  font-family: 'Space Grotesk', var(--bs-font-sans-serif);
+  letter-spacing: -0.01em;
+}
+
+.ops-eyebrow,
+.ops-stat-label {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* -- Gradient rule divider -------------------------------------------------- */
+.ops-gradient-rule {
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--ops-accent) 0%,
+    var(--ops-accent-soft) 50%,
+    var(--ops-accent) 100%
+  );
+  opacity: 0.85;
+  margin: 0;
+}
+
+/* -- Hero ------------------------------------------------------------------ */
+.ops-hero {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--ops-bg-void);
+  background-image:
+    radial-gradient(
+      ellipse at center,
+      rgb(62 217 224 / 12%) 0%,
+      rgb(5 8 11 / 100%) 72%
+    ),
+    url('{{ "/assets/img/binary-rain.svg" | relative_url }}');
+  background-size: cover, 480px 480px;
+  background-position: center, center;
+  background-repeat: no-repeat, repeat;
+  padding: 4.5rem 1.5rem;
+  text-align: center;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+}
+
+.ops-hero-inner {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.ops-eyebrow {
+  color: var(--ops-accent);
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.75rem;
+}
+
+.ops-hero-title {
+  font-family: 'Space Grotesk', var(--bs-font-sans-serif);
+  color: var(--ops-text-primary);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  line-height: 1.15;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.ops-hero-sub {
+  color: var(--ops-text-muted);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.75rem;
+}
+
+.ops-hero-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ops-btn {
+  padding: 0.6rem 1.4rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.ops-btn:hover {
+  transform: translateY(-1px);
+}
+
+.ops-btn-primary {
+  background: linear-gradient(90deg, var(--ops-accent), var(--ops-accent-soft));
+  color: #05080b;
+}
+
+.ops-btn-ghost {
+  background: transparent;
+  color: var(--ops-text-primary);
+  border: 1px solid rgb(242 246 247 / 25%);
+}
+
+/* -- Stat strip -------------------------------------------------------------- */
+.ops-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  padding: 1.75rem 0.5rem;
+  text-align: center;
+}
+
+.ops-stat-num {
+  display: block;
+  font-family: 'Space Grotesk', var(--bs-font-sans-serif);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--ops-text-primary, inherit);
+}
+
+:root[data-mode='dark'] .ops-stat-num {
+  color: var(--ops-accent);
+}
+
+.ops-stat-label {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  color: var(--ops-text-muted);
+  margin-top: 0.25rem;
+}
+
+@media (max-width: 576px) {
+  .ops-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* -- Post cards: cyan hover border ------------------------------------------ */
+:root[data-mode='dark'] .card-wrapper.card:hover {
+  border-color: var(--ops-accent);
+  box-shadow: 0 0 0 1px var(--ops-accent), var(--card-shadow);
+}
+
+/* -- Respect reduced motion -------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .ops-btn {
+    transition: none;
+  }
+}
