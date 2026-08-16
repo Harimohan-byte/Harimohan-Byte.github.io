@@ -4,7 +4,7 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-Hi, I'm Swastik — a first-year B.Tech CSE student with a strong interest in
+Hi, I'm Harimohan Mishra — a Second-year B.Tech CSE student with a strong interest in
 cybersecurity and machine learning.
 
 This blog is where I document TryHackMe rooms and Hack The Box machines
@@ -16,3 +16,5 @@ reinforce what I learn, and to have a reference I can come back to.
 CTF methodology.
 
 Feel free to reach out or follow along as this list grows.
+LinkedIn: www.linkedin.com/in/harimohan-mishra
+Mail: harimohan25100@iiitnr.edu.in
